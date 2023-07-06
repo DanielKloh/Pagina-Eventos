@@ -42,10 +42,19 @@
 
 
     <body>
+      <main>
+       
+        <div class="container-fluid">
+          <div class="row">
+            @if (session("msg"))
+            <p class="msg">{{session("msg")}}</p>
+            @endif
+          </div>  
+        </div>
 
+        @yield('content')
 
-      @yield('content')
-
+      </main>
 
       <footer>
         <p>Daniel Events &copy; 2023</p>
