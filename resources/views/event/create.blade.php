@@ -23,6 +23,15 @@
         <input type="text" class="form-control" id="city" name="city" placeholder="Local do evento">
       </div>
       <div class="form-group">
+        <label for="title">Quantidade de participantes:</label>
+        <input type="text" class="form-control" id="participantes" name="participantes" placeholder="quantidade de participantes">
+      </div>
+      <div class="form-group">
+        <label for="title">Propietario: </label>
+        <input type="text" class="form-control" id="owner" name="owner" placeholder="Propietario">
+      </div>
+      
+      <div class="form-group">
         <label for="title">O evento é privado?</label>
         <select name="private" id="private" class="form-control">
           <option value="0">Não</option>

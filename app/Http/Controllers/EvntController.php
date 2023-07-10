@@ -36,6 +36,8 @@ class EvntController extends Controller
         $event->description= $request->description;
         $event->items = $request->items;
         $event->date = $request->date;
+        $event->participantes = $request->participantes;
+        $event->owner = $request->owner;
 
         if($request->hasFile("image") && $request->file("image")->isValid()){
             $requestImage = $request->image;
