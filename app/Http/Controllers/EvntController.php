@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Event;
+
 class EvntController extends Controller
 {
     public function index()
@@ -18,7 +20,7 @@ class EvntController extends Controller
             $events = Event::all();
 
         }
-        return view("welcome",["events"=>$events,"search"=>$search]);
+        return view("welcome",["events"=>$events,"search"=>$search]); 
     }
 
     public function createEvent(){
@@ -37,7 +39,6 @@ class EvntController extends Controller
         $event->items = $request->items;
         $event->date = $request->date;
         $event->participantes = $request->participantes;
-        $event->owner = $request->owner;
 
         if($request->hasFile("image") && $request->file("image")->isValid()){
             $requestImage = $request->image;
@@ -50,6 +51,9 @@ class EvntController extends Controller
 
             $event->image = $imageName;
         }
+
+        $user = auth()->user();
+        $event->user_id = $user->id;
         
         $event->save();
 
@@ -59,6 +63,59 @@ class EvntController extends Controller
     public function show($id){
 
         $event = Event::findOrFail($id);
-        return view("event/show",["event" => $event]);
+
+        $eventOwner = User::where("id",$event->user_id)->first()->toArray();
+
+        return view("event/show",["event" => $event],["eventOwner"=>$eventOwner]);
+    }
+
+    public function dashboard(){
+
+        $user = auth()->user();
+
+        $events = $user->events;
+
+        return view("event/dashboard", ["events" => $events]);
+    }
+
+
+    public function destroy($id){
+
+        Event::findOrFail($id)->delete();
+
+        return redirect("/dashboard")->with("msg","Evento excluido com sucesso");
+
+    }
+
+
+    public function edit($id){
+
+        $event = Event::FindOrFail($id);
+// var_dump($event);
+// exit;
+        return view("/event/edit",["event" => $event]);
+    }
+
+    public function update(request $request){
+
+        $data = $request->all();
+
+
+
+        if($request->hasFile("image") && $request->file("image")->isValid()){
+            $requestImage = $request->image;
+
+            $extension = $requestImage->extension();
+
+            $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")). "." . $extension;
+
+            $requestImage->move(public_path("img/events"),$imageName);
+
+            $data["image"] = $imageName;
+        }
+
+               Event::FindOrFail($request->id)->update($data); 
+               return redirect("/dashboard")->with("msg","Evento modificado com sucesso");
+
     }
 }

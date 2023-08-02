@@ -202,6 +202,29 @@ header {
   display: flex;
 }
 
+
+
+/* dashboard */
+.dashboard-title-container{
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+.dashboard-events-container tr{
+  width: 25%;
+}
+
+.dashboard-events-container form{
+display: inline;
+}
+
+.img-preview{
+  width: 100px;
+  margin-top:20px;
+}
+
+
+
 /* footer */
 footer {
   text-align: center;

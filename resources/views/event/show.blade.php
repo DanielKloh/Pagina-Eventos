@@ -12,7 +12,7 @@
         <p class="event-city"><ion-icon name="location-outline"></ion-icon> {{ $event->city }}</p>
         <p class="events-participants"><ion-icon name="people-outline"></ion-icon> {{$event->participantes}} Participantes</p>
         <p class="event-owner">Dono do Evento:</p>
-        <p class="event-owner">{{$event->owner}}</p>
+        <p class="event-owner">{{$eventOwner["name"]}}</p>
         <a href="#" class="btn btn-primary" id="event-submit">Confirmar Presença</a>
         <h3>O evento conta com:</h3>
         @foreach ($event->items as $item)
