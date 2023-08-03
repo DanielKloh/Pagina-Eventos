@@ -23,6 +23,7 @@ Route::post("/events",[EvntController::class,"store"]);
 Route::delete("/event/{id}",[EvntController::class,"destroy"])->middleware("auth");
 Route::get('/event/edit/{id}', [EvntController::class, 'edit'])->middleware("auth");
 Route::put('/event/update/{id}', [EvntController::class, 'update'])->middleware("auth");
+Route::post("/event/join/{id}",[EvntController::class, "joinEvent"])->middleware("auth");
 
 
 Route::get("/dashboard",[EvntController::class, "dashboard"])->middleware("auth");
