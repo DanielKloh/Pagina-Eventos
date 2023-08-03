@@ -13,17 +13,21 @@
         <p class="events-participants"><ion-icon name="people-outline"></ion-icon> {{count($event->users)}} Participantes</p>
         <p class="event-owner">Dono do Evento:</p>
         <p class="event-owner">{{$eventOwner["name"]}}</p>
-        <form action="/event/join/{{$event->id}}" method="POST">
-          @csrf
-          <a href="/event/join/{{ $event->id }}" 
-            class="btn btn-primary" 
-            id="event-submit"
-            onclick="event.preventDefault();
-            this.closest('form').submit();">
-            Confirmar Presença
-          </a>
-
-        </form>
+@if (!$hasUserJoin)
+<form action="/event/join/{{$event->id}}" method="POST">
+  @csrf
+  <a href="/event/join/{{ $event->id }}" 
+    class="btn btn-primary" 
+    id="event-submit"
+    onclick="event.preventDefault();
+    this.closest('form').submit();">
+    Confirmar Presença
+  </a>
+</form>
+@else
+<p class="already-joined-msg">Você ja está participando deste evento</p>
+    
+@endif
         <h3>O evento conta com:</h3>
         @foreach ($event->items as $item)
             <li id="items-list">  <span>{{$item}}</span></li>

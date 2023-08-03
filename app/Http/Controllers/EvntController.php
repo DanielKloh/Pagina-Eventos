@@ -66,9 +66,22 @@ class EvntController extends Controller
 
         $event = Event::findOrFail($id);
 
+        $user = auth()->user();
+        $hasUserJoin = false;
+
+        if($user){
+             $userEvents =  $user->eventsAsParticipantes->toArray();
+
+             foreach ($userEvents as $UserEvent) {
+                if($UserEvent["id"] == $id){
+                    $hasUserJoin = true;
+                }
+            }
+        }
+
         $eventOwner = User::where("id", $event->user_id)->first()->toArray();
 
-        return view("event/show", ["event" => $event], ["eventOwner" => $eventOwner]);
+        return view("event/show", ["event" => $event], ["eventOwner" => $eventOwner,"hasUserJoin" => $hasUserJoin]);
     }
 
     public function dashboard()
@@ -133,16 +146,24 @@ class EvntController extends Controller
 
     public function joinEvent($id)
     {
-
-
         $user = auth()->user();
 
         $user->eventsAsParticipantes()->attach($id);
 
-
         $event = Event::FindOrFail($id);
 
         return redirect("/dashboard")->with("msg", "Presensa confirmada " . $event->title);
+
+    }
+
+    public function leaveEvent($id){
+        $user = auth()->user();
+
+        $user->eventsAsParticipantes()->detach($id);
+
+        $event = Event::FindOrFail($id);
+
+        return redirect("/dashboard")->with("msg", "Presensa removida " . $event->title);
 
     }
 }
