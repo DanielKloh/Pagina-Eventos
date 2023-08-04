@@ -17,10 +17,10 @@
     </head>
 
     <header>
-      <nav class="navbar navbar-expand-lg navbar-light">
+      <nav class="navbar navbar-expand-lg navbar-light nav">
         <div class="collapse navbar-collapse" id="navbar">
           <a href="/" class="navbar-brand">
-            <img src="/img/iconeGrupo.jpg" alt="Daniel Events">
+            <img src="/img/iconProjeto.png" alt="Daniel Events">
           </a>
           <ul class="navbar-nav">
             <li class="nav-item">

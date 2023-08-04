@@ -24,7 +24,7 @@
       </div>
       <div class="form-group">
         <label for="title">Quantidade de participantes:</label>
-        <input type="text" class="form-control" id="participantes" name="participantes" placeholder="quantidade de participantes">
+        <input type="text" class="form-control" id="participantes" name="participantes" placeholder="quantidade de participantes" value="0">
       </div>
       
       <div class="form-group">

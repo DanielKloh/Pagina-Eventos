@@ -18,13 +18,20 @@
     @endif
 
     @if (count($events) == 0)
-        <p class="subtitle">Não ha eventos </p>
-        <div style="text-align: center">
-            <a href="/" class="btn btn-primary falhaBusca" >Voltar</a>
-        </div>
+
+        @if ($search == "")
+            <p class="subtitle">Não ha eventos disponiveis</p>
+        @else
+            <p class="subtitle">Não ha eventos </p>
+            <div style="text-align: center">
+                <a href="/" class="btn btn-primary falhaBusca" >Voltar</a>
+            </div>
+        @endif
+
     @else
-        <p class="subtitle">Veja os eventos dos próximos dias</p>
+        <p class="subtitle">Veja os eventos</p>
     @endif
+
     <div id="cards-container" class="row">
         @foreach($events as $event)
         <div class="card col-md-3">
