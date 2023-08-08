@@ -101,6 +101,18 @@ header {
 
 /* Events list */
 
+.icone{
+  margin-right: 5px;
+  color:#F2A340;
+}
+.eventShow{
+  padding-top: 6px;
+}
+
+.event-description{
+  margin-top: 10px;
+}
+
 #events-container {
   padding: 50px;
 }
@@ -190,6 +202,7 @@ header {
 #description-container h3 {
   font-size: 20px;
   font-weight: bold;
+  margin-top: 10px;
 }
 
 #info-container ion-icon {
@@ -206,11 +219,14 @@ header {
   list-style: none;
   padding-left: 0;
 }
-
+.itemListBola{
+  font-size: 20px;
+  font-weight: bold;
+  color: #F2A340;
+}
 #items-list li {
   display: flex;
 }
-
 
 
 /* dashboard */
@@ -232,6 +248,12 @@ display: inline;
   margin-top:20px;
 }
 
+/* profile */
+
+.containerProfile{
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
 
 
 /* footer */

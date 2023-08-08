@@ -25,6 +25,7 @@ Route::get('/event/edit/{id}', [EvntController::class, 'edit'])->middleware("aut
 Route::put('/event/update/{id}', [EvntController::class, 'update'])->middleware("auth");
 Route::post("/event/join/{id}",[EvntController::class, "joinEvent"])->middleware("auth");
 Route::delete("/event/leave/{id}",[EvntController::class, "leaveEvent"])->middleware("auth");
-
+Route::get("/profile",[EvntController::class, "profile"])->middleware("auth");
+Route::get("/profile/edit",[EvntController::class, "editProfile"])->middleware("auth");
 
 Route::get("/dashboard",[EvntController::class, "dashboard"])->middleware("auth");

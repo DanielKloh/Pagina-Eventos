@@ -39,7 +39,7 @@ class EvntController extends Controller
         $event->description = $request->description;
         $event->items = $request->items;
         $event->date = $request->date;
-        $event->participantes = $request->participantes;
+        $event->participantes = 0;
 
         if ($request->hasFile("image") && $request->file("image")->isValid()) {
             $requestImage = $request->image;
@@ -165,5 +165,18 @@ class EvntController extends Controller
 
         return redirect("/dashboard")->with("msg", "Presensa removida " . $event->title);
 
+    }
+
+
+    public function profile(){
+
+        $user = auth()->user();
+        
+        return view("/event/user", ["user" => $user]);
+
+    }
+
+    public function editProfile(){
+        return view("/event/editProfile");
     }
 }

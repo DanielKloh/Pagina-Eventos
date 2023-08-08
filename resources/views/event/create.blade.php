@@ -22,10 +22,10 @@
         <label for="title">Cidade:</label>
         <input type="text" class="form-control" id="city" name="city" placeholder="Local do evento">
       </div>
-      <div class="form-group">
+      {{-- <div class="form-group">
         <label for="title">Quantidade de participantes:</label>
         <input type="text" class="form-control" id="participantes" name="participantes" placeholder="quantidade de participantes" value="0">
-      </div>
+      </div> --}}
       
       <div class="form-group">
         <label for="title">O evento é privado?</label>

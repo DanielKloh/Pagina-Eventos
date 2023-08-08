@@ -1,32 +1,38 @@
+@extends('layout.userAuth')
+@section('title',"Login")
+@section('content')
+
+<div class="container containerCreate">
 <x-guest-layout>
     <x-authentication-card>
         <x-slot name="logo">
-            <x-authentication-card-logo />
+            <div class="card-logo">
+                <img src="/img/iconProjeto.png" alt="Logo do projeto">
+            </div>
         </x-slot>
 
         <x-validation-errors class="mb-4" />
 
         <form method="POST" action="{{ route('register') }}">
             @csrf
-
-            <div>
-                <x-label for="name" value="{{ __('Name') }}" />
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+            <div class="mb-3">
+                <x-label for="name" class="form-label" value="{{ __('Name') }}" />
+                <x-input id="name" class="form-control" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
             </div>
 
-            <div class="mt-4">
-                <x-label for="email" value="{{ __('Email') }}" />
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
+            <div class="mb-3">
+                <x-label for="email" class="form-label" value="{{ __('Email') }}" />
+                <x-input id="email" class="form-control" type="email" name="email" :value="old('email')" required autocomplete="username" />
             </div>
 
-            <div class="mt-4">
-                <x-label for="password" value="{{ __('Password') }}" />
-                <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
+            <div class="mb-3">
+                <x-label for="password" class="form-label" value="{{ __('Password') }}" />
+                <x-input id="password" class="form-control" type="password" name="password" required autocomplete="new-password" />
             </div>
 
-            <div class="mt-4">
-                <x-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
-                <x-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
+            <div class="mb-3">
+                <x-label for="password_confirmation" class="form-label" value="{{ __('Confirm Password') }}" />
+                <x-input id="password_confirmation" class="form-control" type="password" name="password_confirmation" required autocomplete="new-password" />
             </div>
 
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
@@ -51,10 +57,12 @@
                     {{ __('Already registered?') }}
                 </a>
 
-                <x-button class="ml-4">
+                <x-button class="btnMarginLeft btn btn-success">
                     {{ __('Register') }}
                 </x-button>
             </div>
         </form>
     </x-authentication-card>
 </x-guest-layout>
+</div>
+@endsection

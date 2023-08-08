@@ -9,10 +9,11 @@
       </div>
       <div id="info-container" class="col-md-6">
         <h1>{{ $event->title }}</h1>
-        <p class="event-city"><ion-icon name="location-outline"></ion-icon> {{ $event->city }}</p>
-        <p class="events-participants"><ion-icon name="people-outline"></ion-icon> {{count($event->users)}} Participantes</p>
-        <p class="event-owner">Dono do Evento:</p>
-        <p class="event-owner">{{$eventOwner["name"]}}</p>
+        
+        <p class="eventShow"> <img class="icone" src="../img/icon/locate.svg" alt="icone de localizção"> {{ $event->city }}</p>
+        <p class="eventShow"><img class="icone" src="../img/icon/participants.svg" alt="icone de participantes"> {{count($event->users)}} Participantes</p>
+        <p class="eventShow">Dono do Evento:</p>
+        <p class=""><img class="icone" src="../img/icon/star.svg" alt="icone do dono do evento">{{$eventOwner["name"]}}</p>
 @if (!$hasUserJoin)
 <form action="/event/join/{{$event->id}}" method="POST">
   @csrf
@@ -30,7 +31,7 @@
 @endif
         <h3>O evento conta com:</h3>
         @foreach ($event->items as $item)
-            <li id="items-list">  <span>{{$item}}</span></li>
+            <li id="items-list"> <span class='itemListBola'>○</span>  <span>{{$item}}</span></li>
         @endforeach
       </div>
       <div class="col-md-12" id="description-container">
@@ -40,4 +41,4 @@
     </div>
   </div>
 
-@endsection
+@endsection 

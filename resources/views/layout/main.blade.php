@@ -34,6 +34,9 @@
               <a href="/dashboard" class="nav-link">Meus eventos</a>
             </li>
             <li class="nav-item">
+              <a href="/profile" class="nav-link">Meu perfil</a>
+            </li>
+            <li class="nav-item">
               <form action="/logout" method="POST">
                 @csrf
                 <a href="/logout" 
